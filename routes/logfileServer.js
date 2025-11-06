@@ -4,13 +4,21 @@
  */
 
 const path = require('path')
+const { exec } = require('child_process')
 
 module.exports = function serveLogFiles () {
   return ({ params }, res, next) => {
     const file = params.file
 
     if (!file.includes('/')) {
-      res.sendFile(path.resolve(__dirname, '../logs/', file))
+      exec(`cat logs/${file}`, (error, stdout, stderr) => {
+        if (error) {
+          res.status(404)
+          next(new Error('File not found'))
+        } else {
+          res.send(stdout)
+        }
+      })
     } else {
       res.status(403)
       next(new Error('File names cannot contain forward slashes!'))
