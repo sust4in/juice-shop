@@ -7,7 +7,7 @@ const sinon = require('sinon')
 const chai = require('chai')
 const sinonChai = require('sinon-chai')
 const expect = chai.expect
-const { exec } = require('child_process')
+const childProcess = require('child_process')
 chai.use(sinonChai)
 
 describe('logfileServer', () => {
@@ -18,7 +18,7 @@ describe('logfileServer', () => {
     this.res = { send: sinon.spy(), status: sinon.spy() }
     this.req = { params: {} }
     this.next = sinon.spy()
-    execStub = sinon.stub(require('child_process'), 'exec')
+    execStub = sinon.stub(childProcess, 'exec')
     execStub.callsArgWith(1, null, 'log content', '')
   })
 
