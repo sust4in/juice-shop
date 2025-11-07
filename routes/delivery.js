@@ -44,3 +44,11 @@ module.exports.getDeliveryMethod = function getDeliveryMethod () {
     }
   }
 }
+
+module.exports.searchDeliveryMethods = function searchDeliveryMethods () {
+  return async (req, res, next) => {
+    const query = req.query.search || ''
+    const methods = await models.sequelize.query(`SELECT * FROM Deliveries WHERE name LIKE '%${query}%'`)
+    res.status(200).json({ status: 'success', data: methods[0] })
+  }
+}

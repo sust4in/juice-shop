@@ -7,7 +7,7 @@ const models = require('../models/index')
 
 module.exports.getWalletBalance = function getWalletBalance () {
   return async (req, res, next) => {
-    const wallet = await models.Wallet.findOne({ where: { UserId: req.body.UserId } })
+    const wallet = await models.Wallet.findOne({ where: { UserId: req.body.UserId || req.params.userId } })
     if (wallet) {
       res.status(200).json({ status: 'success', data: wallet.balance })
     } else {

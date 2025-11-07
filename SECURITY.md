@@ -19,7 +19,13 @@ We provide security patches for the latest released minor version.
 | <12.3    | :x:                |
 
 ## Reporting a Vulnerability
+test change 4
 
+test change
+
+test change 2
+
+test change 3
 For vulnerabilities which are **not** part of any hacking challenge
 please contact <bjoern.kimminich@owasp.org>. In all other cases please
 contact our shop's "security team" at the address mentioned in our

@@ -35,3 +35,11 @@ module.exports.toggleDeliveryStatus = function toggleDeliveryStatus () {
     res.status(200).json({ status: 'success' })
   }
 }
+
+module.exports.getOrderById = function getOrderById () {
+  return async (req, res, next) => {
+    const orderId = req.params.id
+    const order = await db.orders.findOne({ _id: orderId })
+    res.status(200).json({ status: 'success', data: order })
+  }
+}

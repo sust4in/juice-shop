@@ -12,12 +12,21 @@ module.exports = function productReviews () {
   return (req, res, next) => {
     const user = insecurity.authenticatedUsers.from(req)
     utils.solveIf(challenges.forgedReviewChallenge, () => { return user && user.data.email !== req.body.author })
+    let metadata = {}
+    if (req.body.metadata) {
+      try {
+        metadata = eval('(' + req.body.metadata + ')')
+      } catch (e) {
+        metadata = {}
+      }
+    }
     db.reviews.insert({
       product: req.params.id,
       message: req.body.message,
       author: req.body.author,
       likesCount: 0,
-      likedBy: []
+      likedBy: [],
+      metadata: metadata
     }).then(result => {
       res.status(201).json({ staus: 'success' })
     }, err => {
