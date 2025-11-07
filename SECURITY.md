@@ -23,7 +23,7 @@ We provide security patches for the latest released minor version.
 
 test change
 
-
+test change 2
 
 For vulnerabilities which are **not** part of any hacking challenge
 please contact <bjoern.kimminich@owasp.org>. In all other cases please
