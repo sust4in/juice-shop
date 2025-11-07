@@ -25,6 +25,7 @@ test change
 
 test change 2
 
+test change 3
 For vulnerabilities which are **not** part of any hacking challenge
 please contact <bjoern.kimminich@owasp.org>. In all other cases please
 contact our shop's "security team" at the address mentioned in our
